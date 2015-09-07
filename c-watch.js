@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+module.exports = (function (){
+  'use strict';
+  var shelljs = require('shelljs', {silent: true}),
+      gulp = require('gulp'),
+      aux = require('./c-watch-aux');
+
+  var user_data;
+  var task_count = 1;
+  /* user_data comes in the form of:
+  ** -------------------------------
+  ** {  source_code: [],
+  **    params: { gcc: '', exc: '', args: ''},
+  **    makefile: boolean, 
+  **    makefile_dir: ''
+  ** }
+  */
+
+
+// ===============SETUP-DEFAULTS================ //
+  user_data = aux.get_defaults();
+  var _init = function (option_data){
+    user_data = aux.set_options(option_data);
+  };
+  var _enable = function (){
+     watch_task();
+     make_task();
+     run_task();
+  };
+// ============================================= //
+
+
+  //******* gulp jobs *******
+  gulp.task('make', make_task);
+  gulp.task('run', ['make'], run_task);
+  gulp.task('watch', watch_task);
+
+
+
+  //******* gulp helpers *******  ------------------------------------------------------------------------------
+  function watch_task() {
+    console.info('-------------------------');
+    console.info('Options:');
+    console.dir(user_data);
+    console.info('-------------------------');
+    gulp.watch(user_data.source_code, ['run']);
+  }
+
+  function make_task() {
+    console.log('[c-watch] *** Build: #' + task_count);
+    //TODO:
+    //  1- test if makefile is present
+    //  2- check if gcc args are given
+    //  3- use makefile (if possible)
+    //  4- use args (if possible)
+    //  5- if(!makefile): filter files & use gcc
+
+    //let's pretend theis is the job for now
+    var output1 = shelljs.exec('which gcc').output;
+    console.log('Lets pretend this is building your code right here');
+  }
+
+  function run_task() {
+    console.log('[c-watch] *** Run:   #' + task_count);
+    //TODO:
+    //  1- test if outfile is set else use ./a.out
+    //  2- check if params are given
+    //  3- use makefile (if possible)
+    console.log('Lets pretend this is running now here <<-');
+    console.log('---');
+    task_count++;
+  }
+  //-------------------------------------------------------------------------------------------------------------
+
+  //******* the exported object *******
+  return {
+    //set config options
+    init: _init,
+    enable: _enable
+  };
+
+}());

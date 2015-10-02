@@ -75,19 +75,19 @@ module.exports = (function (){
     //  1- test if outfile is set else use ./a.out
     //  2- check if params are given
     //  3- use makefile (if possible)
-    if(user_data.exc === undefined){
-      user_data.exc = 'a.out';
+    if(user_data.params.exc === undefined){
+      user_data.params.exc = 'a.out';
     }
     if(user_data.makefile_dir.indexOf('./') === -1)
-      run_output += shelljs.exec('./' + user_data.makefile_dir + user_data.exc).output;
+      run_output += shelljs.exec('./' + user_data.makefile_dir + user_data.params.exc).output;
     else
-      run_output += shelljs.exec(user_data.makefile_dir + user_data.exc).output;
+      run_output += shelljs.exec(user_data.makefile_dir + user_data.params.exc).output;
     console.info(run_output + '\n');
     //console.log('[c-watch] done.');
     task_count++;
     //remove the old executable file
-    shelljs.exec('echo "hello" > ' + user_data.makefile_dir + user_data.exc +
-                 ' && ' + 'rm ' + user_data.makefile_dir + user_data.exc);
+    shelljs.exec('echo "hello" > ' + user_data.makefile_dir + user_data.params.exc +
+                 ' && ' + 'rm ' + user_data.makefile_dir + user_data.params.exc);
   }
   //------------------------------------------------------------------------------------------------
 

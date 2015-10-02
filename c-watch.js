@@ -11,7 +11,7 @@ module.exports = (function (){
   ** -------------------------------
   ** {  source_code: [],
   **    params: { gcc: '', exc: '', args: ''},
-  **    makefile: boolean, 
+  **    makefile: boolean,
   **    makefile_dir: ''
   ** }
   */
@@ -37,17 +37,18 @@ module.exports = (function (){
 
 
 
-  //******* gulp helpers *******  ------------------------------------------------------------------------------
+  //******* gulp helpers *******  ------------------------------------------------------------------
   function watch_task() {
-    console.info('-------------------------');
-    console.info('Options:');
-    console.dir(user_data);
-    console.info('-------------------------');
+    // //DEBUG
+    // console.info('-------------------------');
+    // console.info('Options:');
+    // console.dir(user_data);
+    // console.info('-------------------------');
     gulp.watch(user_data.source_code, ['run']);
   }
 
   function make_task() {
-    console.log('[c-watch] *** Build: #' + task_count);
+    console.log('[c-watch] --- Build: #' + task_count);
     //TODO:
     //  1- test if makefile is present
     //  2- check if gcc args are given
@@ -55,22 +56,40 @@ module.exports = (function (){
     //  4- use args (if possible)
     //  5- if(!makefile): filter files & use gcc
 
-    //let's pretend theis is the job for now
-    var output1 = shelljs.exec('which gcc').output;
-    console.log('Lets pretend this is building your code right here');
+    //handle makefile build
+    if(user_data.makefile){
+      var build_output = '';
+      build_output += shelljs.exec('cd ' + user_data.makefile_dir + ' && make').output;
+      console.info(build_output);
+      //console.log('[c-watch] done.');
+    }else{
+      console.error('[c-watch] ! ** Error: This early version of c-watch requires a Makefile');
+    }
+
   }
 
   function run_task() {
-    console.log('[c-watch] *** Run:   #' + task_count);
+    var run_output = '';
+    console.log('[c-watch] --- Run:   #' + task_count);
     //TODO:
     //  1- test if outfile is set else use ./a.out
     //  2- check if params are given
     //  3- use makefile (if possible)
-    console.log('Lets pretend this is running now here <<-');
-    console.log('---');
+    if(user_data.exc === undefined){
+      user_data.exc = 'a.out';
+    }
+    if(user_data.makefile_dir.indexOf('./') === -1)
+      run_output += shelljs.exec('./' + user_data.makefile_dir + user_data.exc).output;
+    else
+      run_output += shelljs.exec(user_data.makefile_dir + user_data.exc).output;
+    console.info(run_output + '\n');
+    //console.log('[c-watch] done.');
     task_count++;
+    //remove the old executable file
+    shelljs.exec('echo "hello" > ' + user_data.makefile_dir + user_data.exc +
+                 ' && ' + 'rm ' + user_data.makefile_dir + user_data.exc);
   }
-  //-------------------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------
 
   //******* the exported object *******
   return {

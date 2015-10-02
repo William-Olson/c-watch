@@ -4,7 +4,8 @@
   "description": "uses gulp to watch c files and run make command on changes.",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "start": "./index.js",
+    "test": "./index.js -s \"test/Makefile,test/hello.c\""
   },
   "keywords": [
     "gulp",

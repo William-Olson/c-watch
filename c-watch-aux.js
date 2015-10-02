@@ -19,9 +19,9 @@ module.exports = (function () {
 
   function check_for_makefile () {
     var dir = shelljs.exec('ls').output.split('\n');
-    if(dir.indexOf('makefile') !== -1){
+    if(dir.indexOf('Makefile') !== -1){
       config.makefile = true;
-      config.makefile_dir = '.';
+      config.makefile_dir = './';
       console.info('[c-watch] Using makefile in project directory');
     }else{
       config.makefile = false;
@@ -29,15 +29,17 @@ module.exports = (function () {
   }
 
   function check_for_custom_makfile() {
-    var found = false;
+    var found = false, attempt = -1;
     for(var i = 0; i < config.source_code.length; i++){
-      if(config.source_code[i].indexOf('makefile') !== -1){
+      attempt = config.source_code[i].indexOf('Makefile');
+      if(attempt !== -1){
         config.makefile = true;
-        config.makefile_dir = config.source_code[i];
+        config.makefile_dir = config.source_code[i].slice(0, attempt);
         found = true;
         console.info('[c-watch] Using custom makefile location: ' + config.makefile_dir);
       }
     }
+    //TODO: could recursively check subdirectories for makefile here
     if(!found)
       console.info('[c-watch] No makefile found, using gcc options instead');
   }

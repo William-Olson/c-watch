@@ -92,15 +92,15 @@ module.exports = (function () {
       '\n  -o, --out="..."        : ex. -o "foo.out" ' +
       '\n  -p, --params="..."     : ex. -p "inFile.txt >> outFile.txt"' +
       '\n  -h, --help             : displays this menu \n\n\n'
-  	);  
+  	);
   }
 
   function format_error(focus, opt_msg) {
   	console.error('\n[c-watch] ! ** Error: ');
-	console.error('\tImproper option format: ', focus + '\n');
-	if(opt_msg) console.error(opt_msg);
-	print_help();
-	process.exit(1);
+  	console.error('\tImproper option format: ', focus + '\n');
+  	if(opt_msg) console.error(opt_msg);
+  	print_help();
+  	process.exit(1);
   }
 
   function trim_each (opt, n, opts) {

@@ -1,0 +1,7 @@
+This is foo content!
+
+Try renaming test/2/foo.txt,
+
+That should throw an
+
+error!

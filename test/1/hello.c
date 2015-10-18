@@ -8,7 +8,7 @@
 int main (int argc, char **argv) {
 	printf("hello world!\n");
   //foo();
-  printf("(Now make some edits to test/hello.c)\n");
+  printf("(Now make some edits to test/1/hello.c)\n");
 	return 0;
 }
 

@@ -39,11 +39,6 @@ module.exports = (function (){
 
   //******* gulp helpers *******  ------------------------------------------------------------------
   function watch_task() {
-    // //DEBUG
-    // console.info('-------------------------');
-    // console.info('Options:');
-    // console.dir(user_data);
-    // console.info('-------------------------');
     gulp.watch(user_data.source_code, ['run']);
   }
 
@@ -69,19 +64,18 @@ module.exports = (function (){
   }
 
   function run_task() {
-    var run_output = '';
+    var run_output = '', shell_str = '';
     console.log('[c-watch] --- Run:   #' + task_count);
-    //TODO:
-    //  1- test if outfile is set else use ./a.out
-    //  2- check if params are given
-    //  3- use makefile (if possible)
-    if(user_data.params.exc === undefined){
+
+    //default check
+    if(!user_data.params.exc)
       user_data.params.exc = 'a.out';
-    }
-    if(user_data.makefile_dir.indexOf('./') === -1)
-      run_output += shelljs.exec('./' + user_data.makefile_dir + user_data.params.exc).output;
-    else
-      run_output += shelljs.exec(user_data.makefile_dir + user_data.params.exc).output;
+    if(!user_data.params.args)
+      user_data.params.args = '';
+
+    //run it
+    shell_str = user_data.makefile_dir + user_data.params.exc + ' ' + user_data.params.args;
+    run_output += shelljs.exec(shell_str).output;
     console.info(run_output + '\n');
     //console.log('[c-watch] done.');
     task_count++;

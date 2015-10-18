@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "./index.js",
-    "test": "./index.js -s \"test/Makefile,test/hello.c\""
+    "test": "./index.js -s \"test/1/Makefile,test/1/hello.c\"",
+    "test2": "./index.js -s \"test/2/Makefile,test/2/*\" -p \"test/2/foo.txt\" -o test2"
   },
   "keywords": [
     "gulp",

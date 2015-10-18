@@ -4,7 +4,7 @@
 
 
  //handle and log arguments info -----------------------
-  var cli_aux = require('./cli-aux');
+  var cli_aux = require('../lib/cli-aux');
   var options = cli_aux.input;
   if(cli_aux.opt_count === 0)
     console.info('[c-watch] Using default options');
@@ -13,11 +13,11 @@
 
 
  //configure watcher -----------------------------------
-  var watcher = require('./c-watch');
+  var watcher = require('../lib/c-watch');
   if(cli_aux.opt_count > 0)
-  	watcher.init(options);
+    watcher.init(options);
   else
-  	watcher.init({ params: {} });
+    watcher.init({ params: {} });
 
 
  //start watching --------------------------------------

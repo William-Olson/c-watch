@@ -1,20 +1,31 @@
 {
   "name": "c-watch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "uses gulp to watch c files and run make command on changes.",
-  "main": "index.js",
+  "main": "bin/c-watch",
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin"
+  },
   "scripts": {
-    "start": "./index.js",
-    "test": "./index.js -s \"test/1/Makefile,test/1/hello.c\"",
-    "test2": "./index.js -s \"test/2/Makefile,test/2/*\" -p \"test/2/foo.txt\" -o test2"
+    "start": "./bin/c-watch",
+    "test": "./bin/c-watch -s \"test/1/Makefile,test/1/hello.c\"",
+    "test2": "./bin/c-watch -s \"test/2/Makefile,test/2/*\" -p \"test/2/foo.txt\" -o test2"
   },
   "keywords": [
     "gulp",
     "c",
+    "c++",
+    "watcher",
     "make"
   ],
   "author": "Will Olson",
   "license": "BSD-2-Clause",
+  "homepage": "http://github.com/William-Olson/c-watch",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/William-Olson/c-watch.git"
+  },
   "dependencies": {
     "shelljs": "~0.5.3",
     "gulp": "~3.9.0"

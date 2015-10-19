@@ -1,6 +1,6 @@
 {
   "name": "c-watch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "uses gulp to watch c files and run make command on changes.",
   "main": "bin/c-watch",
   "preferGlobal": "true",

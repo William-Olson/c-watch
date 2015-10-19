@@ -38,7 +38,7 @@ c-watch
 ```
 
 c-watch will look in the current directory for a Makefile and watches
-any files with .c or .h extensions in the current directory. It tries
+any files with .c, .cpp or .h extensions in the current directory. It tries
 to run an executable named a.out.
 
 ### Common options

@@ -24,7 +24,7 @@ this should output something like this:
   -s, --source="..."        ex. -s "./*, ./src/*"  #comma delimitted
   -g, --gcc="..."      [!]  ex. -g "-O3 --Wall"    #space delimitted
   -o, --out="..."           ex. -o "foo.out"
-  -p, --params="..."        ex. -p "inFile.txt >> outFile.txt"
+  -p, --params="..."        ex. -p "inFile.txt 25"
   -h, --help                displays this menu
 
     [!] = Unsupported at this time.
@@ -66,5 +66,13 @@ c-watch -o ./bin/a.out
 Pass some args to your c executable.
 
 ```
-c-watch -p "input-file.txt 9000.1"
+c-watch -p "input-file.txt 9000.1 0xFF -v ..etc."
+```
+
+**gotcha**: avoid using redirection for output in the param field.  You can redirect the whole
+output with redirection outside of the param field.
+
+```
+#append output to output-file.txt
+c-watch -p "input-file.txt" >> output-file.txt
 ```

@@ -10,7 +10,7 @@
   "scripts": {
     "start": "./bin/c-watch",
     "test": "./bin/c-watch -s \"test/1/Makefile,test/1/hello.c\"",
-    "test2": "./bin/c-watch -s \"test/2/Makefile,test/2/*\" -p \"test/2/foo.txt\" -o test2"
+    "test2": "./bin/c-watch -s \"test/2/Makefile,test/2/*.cpp,test/2/*.txt\" -p \"test/2/foo.txt\" -o test2"
   },
   "keywords": [
     "gulp",

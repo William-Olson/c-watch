@@ -11,5 +11,5 @@ npm run test2
 or:
 
 ```
-./index.js -s "./test/2/Makefile,./test/2/*" -o "test2" -p "./test/2/foo.txt"
+./bin/c-watch -s "./test/2/Makefile,./test/2/*" -o "test2" -p "./test/2/foo.txt"
 ```

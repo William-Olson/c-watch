@@ -5,6 +5,10 @@
     automatically running in the terminal!
 */
 
+void foo(){
+	printf("foo\n");
+}
+
 int main (int argc, char **argv) {
 	printf("hello world!\n");
   //foo();
@@ -12,6 +16,3 @@ int main (int argc, char **argv) {
 	return 0;
 }
 
-int foo(){
-	printf("foo\n");
-}

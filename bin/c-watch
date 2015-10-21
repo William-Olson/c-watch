@@ -14,10 +14,7 @@
 
  //configure watcher -----------------------------------
   var watcher = require('../lib/c-watch');
-  if(cli_aux.opt_count > 0)
-    watcher.init(options);
-  else
-    watcher.init({ params: {} });
+  watcher.init(options);
 
 
  //start watching --------------------------------------

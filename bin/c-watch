@@ -2,9 +2,11 @@
 (function (){
   'use strict';
 
-
- //handle and log arguments info -----------------------
   var cli_aux = require('../lib/cli-aux');
+  var watcher = require('../lib/c-watch');
+
+
+ // handle and log arguments info -----------------------
   var options = cli_aux(process.argv).input;
   if(cli_aux.opt_count === 0)
     console.info('[c-watch] Using default options');
@@ -12,13 +14,8 @@
     console.warn('[c-watch] Proceeding with warnings!');
 
 
- //configure watcher -----------------------------------
-  var watcher = require('../lib/c-watch');
+ // run watcher -----------------------------------
   watcher.init(options);
-
-
- //start watching --------------------------------------
   watcher.enable();
-
 
 }());

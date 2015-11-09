@@ -1,21 +1,28 @@
 #!/usr/bin/env node
-(function (){
-  'use strict';
+'use strict';
+
+try{
 
   var cli_aux = require('../lib/cli-aux');
   var watcher = require('../lib/c-watch');
 
 
  // handle and log arguments info -----------------------
-  var options = cli_aux(process.argv).input;
-  if(cli_aux.opt_count === 0)
+  var options = cli_aux(process.argv);
+  if(options.help) process.exit(0);
+  if(options.opt_count === 0)
     console.info('[c-watch] Using default options');
-  if(cli_aux.warnings > 0)
+  if(options.warnings > 0)
     console.warn('[c-watch] Proceeding with warnings!');
 
 
  // run watcher -----------------------------------
-  watcher.init(options);
+  watcher.init(options.input);
   watcher.enable();
 
-}());
+} catch (ex){
+  //all errors should bubble to here
+  console.error(ex.message || ex.toString());
+  process.exit(1);
+
+}

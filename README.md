@@ -27,6 +27,7 @@ this should output something like this:
   -g, --gcc="..."      [!]  ex. -g "-O3 --Wall"    #space delimitted
   -o, --out="..."           ex. -o "foo.out"
   -p, --params="..."        ex. -p "inFile.txt 25"
+  -m, --make="..."          ex. -m "target"
   -h, --help                displays this menu
 
     [!] = Unsupported at this time.
@@ -53,6 +54,17 @@ you can explicitly provide it with the source flag (-s).
 ```
 c-watch -s "some-dir/Makefile,src/*.c,src/*.h"
 ```
+
+**Build**
+
+Specify to only build a certain item in the makefile:
+
+```
+c-watch -s "some-dir/Makefile,src/*.c,src/*.h" --make="target_two"
+```
+
+The above will run `make target_two` instead of just `make` by itself.  Specify
+multiple targets if you want (delimited by spaces).
 
 **Executable**
 

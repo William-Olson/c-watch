@@ -1,5 +1,7 @@
 ## c-watch
 
+[![Build Status](https://travis-ci.org/William-Olson/c-watch.svg?branch=master)](https://travis-ci.org/William-Olson/c-watch)
+
 A simple watcher program for C/C++ projects.  Automatically
 runs make and executes the c program when src files are changed.
 

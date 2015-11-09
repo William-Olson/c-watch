@@ -5,5 +5,5 @@ Tests if file changes trigger a build & run sequence.
 #### Run the test:
 
 ```
-npm test
+npm run ex1
 ```

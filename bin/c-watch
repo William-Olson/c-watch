@@ -5,7 +5,7 @@
 
  //handle and log arguments info -----------------------
   var cli_aux = require('../lib/cli-aux');
-  var options = cli_aux.input;
+  var options = cli_aux(process.argv).input;
   if(cli_aux.opt_count === 0)
     console.info('[c-watch] Using default options');
   if(cli_aux.warnings > 0)

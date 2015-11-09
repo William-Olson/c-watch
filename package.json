@@ -9,8 +9,10 @@
   },
   "scripts": {
     "start": "./bin/c-watch",
-    "test": "./bin/c-watch -s \"test/1/Makefile,test/1/hello.c\"",
-    "test2": "./bin/c-watch -s \"test/2/Makefile,test/2/*.cpp,test/2/*.txt\" -p \"test/2/foo.txt\" -o test2"
+    "test": "./node_modules/.bin/jasmine-node --verbose test",
+    "watch": "./node_modules/.bin/jasmine-node test --autotest --watch lib/ bin/c-watch --color --verbose",
+    "ex1": "./bin/c-watch -s \"test/examples/1/Makefile,test/examples/1/hello.c\"",
+    "ex2": "./bin/c-watch -s \"test/examples/2/Makefile,test/examples/2/*.cpp,test/examples/2/*.txt\" -p \"test/examples/2/foo.txt\" -o test2"
   },
   "keywords": [
     "gulp",
@@ -29,5 +31,8 @@
   "dependencies": {
     "shelljs": "~0.5.3",
     "gulp": "~3.9.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }

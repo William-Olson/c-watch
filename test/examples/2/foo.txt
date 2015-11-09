@@ -1,6 +1,6 @@
 This is foo content!
 
-Try renaming test/2/foo.txt,
+Try renaming test/examples/2/foo.txt,
 
 That should throw an
 

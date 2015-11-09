@@ -22,7 +22,7 @@
     "make"
   ],
   "author": "Will Olson",
-  "license": "BSD-2-Clause",
+  "license": "BSD-3-Clause",
   "homepage": "http://github.com/William-Olson/c-watch",
   "repository": {
     "type": "git",

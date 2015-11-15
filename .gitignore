@@ -1,5 +1,6 @@
 node_modules/
 src/
 *.o
-test/1/a.out
-test/2/test2
+test/examples/1/a.out
+test/examples/2/test2
+coverage/

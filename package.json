@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "./bin/c-watch",
+    "ci-tests": "istanbul cover ./node_modules/.bin/jasmine-node --verbose test",
     "test": "./node_modules/.bin/jasmine-node --verbose test",
     "watch": "./node_modules/.bin/jasmine-node test --autotest --watch lib/ bin/c-watch --color --verbose",
     "ex1": "./bin/c-watch -s \"test/examples/1/Makefile,test/examples/1/hello.c\"",

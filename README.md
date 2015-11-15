@@ -1,7 +1,11 @@
 ## c-watch
 
+[//]: # (Badges)
 [![Build Status](https://travis-ci.org/William-Olson/c-watch.svg?branch=master)](https://travis-ci.org/William-Olson/c-watch)
+[![Code Climate](https://codeclimate.com/github/William-Olson/c-watch/badges/gpa.svg)](https://codeclimate.com/github/William-Olson/c-watch)
+[![Test Coverage](https://codeclimate.com/github/William-Olson/c-watch/badges/coverage.svg)](https://codeclimate.com/github/William-Olson/c-watch/coverage)
 
+[//]: # (Description)
 A simple watcher program for C/C++ projects.  Automatically
 runs make and executes the c program when src files are changed.
 

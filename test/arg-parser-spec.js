@@ -1,13 +1,13 @@
 'use strict';
 
-describe('cli-aux', function() {
+describe('arg-parser', function() {
 
   //spec test variables
   var spec_config = {
       no_args: []
     , bad_args: []
     , good_args: []
-    , cli_aux: require('../lib/cli-aux')
+    , cli_aux: require('../lib/arg-parser')
   }
   , expected = true
   , result = false;
@@ -45,20 +45,28 @@ describe('cli-aux', function() {
   it('should populate input.params with options', function(){
     //test empty args first
     expected = 0;
-    result = Object.keys(spec_config.cli_aux(spec_config.no_args).input.params).length;
-    expect(result).toEqual(expected);
+    const count = (args) => {
+      const params = spec_config.cli_aux(args).input.params;
+      result = 0
+      for (let key in params) {
+        if (params[key]) {
+          result++;
+        }
+      }
+      return result;
+    };
+    expect(count(spec_config.no_args)).toEqual(expected);
 
     //test population of single arg
     expected = 1;
-    result = Object.keys(spec_config.cli_aux(spec_config.good_args).input.params).length;
-    expect(result).toEqual(expected);
+    expect(count(spec_config.good_args)).toEqual(expected);
   });
 
   it('should throw a bad format error when an improper arg string is passed in', function() {
     expected = true;
     result = false;
     try{
-        spec_config.no_args.push('--bad-format-test');
+        spec_config.no_args.push('--source');
         spec_config.cli_aux(spec_config.no_args);
     }catch(res){
         console.log(res.message);

@@ -3,7 +3,7 @@
 
 try{
 
-  var cli_aux = require('../lib/cli-aux');
+  var cli_aux = require('../lib/arg-parser');
   var watcher = require('../lib/c-watch');
 
 
